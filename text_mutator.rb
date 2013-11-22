@@ -1,7 +1,7 @@
 def main
   # check the number of commandline arguments
   if(ARGV.length < 1)
-    puts "Usage: ruby text_mutator.rb [--reverse --upper --lower --swapcase] <input text>"
+    puts "Usage: ruby text_mutator.rb [--reverse --upper --lower] <input text>"
     exit
   end
   
@@ -9,7 +9,8 @@ def main
   modification = ARGV[0]
 
   # store input text into text variable
-  text = ARGV[1]
+  puts "Input some text, please"
+  text = $stdin.gets.chomp
 
   # modify text accordingly
   case modification
@@ -19,8 +20,6 @@ def main
     mod_text = upper_mod text
   when "--lower"
     mod_text = lower_mod text
-  when "--swapcase"
-    mod_text = swapcase_mod text
   else
     puts "ERROR: Unrecognized modifier!"
     exit
@@ -42,10 +41,6 @@ end
 
 def lower_mod input
   input.downcase
-end
-
-def swapcase_mod input
-  input.swapcase
 end
 
 # Call main method
